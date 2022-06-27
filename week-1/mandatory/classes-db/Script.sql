@@ -1,4 +1,4 @@
-create table mentors1 (
+CREATE TABLE mentors1 (
     id SERIAL primary key,
     name VARCHAR(30) NOT NULL,
     years_in_glasglow SMALLINT NOT NULL,
@@ -25,38 +25,39 @@ INSERT INTO mentors1 (name, years_in_glasglow, adress, language) values ('Pedro'
 
 
 
-create table students1 (
+CREATE TABLE students1 (
     id SERIAL primary key,
     name VARCHAR(30) NOT NULL,
     adress VARCHAR(100) NOT null,
-    gratuated_from_cyf BOOLEAN
+    graduated_from_cyf BOOLEAN
 );
 
 
 
-INSERT INTO students1 (name, adress, gratuated_from_cyf) values ('Joana', 'Plaza dos', true);
+INSERT INTO students1 (name, adress, graduated_from_cyf) values ('Joana', 'Plaza dos', true);
 
-INSERT INTO students1 (name, adress, gratuated_from_cyf) values ('Jenny', 'Principal street', false);
+INSERT INTO students1 (name, adress, graduated_from_cyf) values ('Jenny', 'Principal street', false);
 
-INSERT INTO students1 (name, adress, gratuated_from_cyf) values ('Joana', 'Plaza dos', true);
+INSERT INTO students1 (name, adress, graduated_from_cyf) values ('Joana', 'Plaza dos', true);
 
-INSERT INTO students1 (name, adress, gratuated_from_cyf) values ('Paul', '4th Street', true);
+INSERT INTO students1 (name, adress, graduated_from_cyf) values ('Paul', '4th Street', true);
 
-INSERT INTO students1 (name, adress, gratuated_from_cyf) values ('Carol', 'Big Bang', false);
+INSERT INTO students1 (name, adress, graduated_from_cyf) values ('Carol', 'Big Bang', false);
 
-INSERT INTO students1 (name, adress, gratuated_from_cyf) values ('Rosalia', 'Sunny Street', true);
+INSERT INTO students1 (name, adress, graduated_from_cyf) values ('Rosalia', 'Sunny Street', true);
 
-INSERT INTO students1 (name, adress, gratuated_from_cyf) values ('Mary', 'Last Street', true);
+INSERT INTO students1 (name, adress, graduated_from_cyf) values ('Mary', 'Last Street', true);
 
-INSERT INTO students1 (name, adress, gratuated_from_cyf) values ('Carla', 'Calle 3', false);
+INSERT INTO students1 (name, adress, graduated_from_cyf) values ('Carla', 'Calle 3', false);
 
-INSERT INTO students1 (name, adress, gratuated_from_cyf) values ('Fran', '45th Street', true);
+INSERT INTO students1 (name, adress, graduated_from_cyf) values ('Fran', '45th Street', true);
 
-INSERT INTO students1 (name, adress, gratuated_from_cyf) values ('Tafarel', 'Calle del Amor', true);
+INSERT INTO students1 (name, adress, graduated_from_cyf) values ('Tafarel', 'Calle del Amor', true);
 
-INSERT INTO students1 (name, adress, gratuated_from_cyf) values ('Pablo', 'Calle Roja', true);
+INSERT INTO students1 (name, adress, graduated_from_cyf) values ('Pablo', 'Calle Roja', true);
 
-create table classes (
+
+CREATE TABLE classes (
     id SERIAL primary key,
     mentor_id INT references mentors1(id),
     topic varchar(50) not null,
@@ -76,33 +77,33 @@ create table attendance (
     class_id int references classes(id)
 );
 
-insert into attendance (student_id, class_id) values (5, 1);
-insert into attendance (student_id, class_id) values (5, 4);
-insert into attendance (student_id, class_id) values (10, 3);
-insert into attendance (student_id, class_id) values (2, 1);
-insert into attendance (student_id, class_id) values (6, 4);
-insert into attendance (student_id, class_id) values (7, 3);
-insert into attendance (student_id, class_id) values (6, 1);
-insert into attendance (student_id, class_id) values (9, 4);
+INSERT INTO attendance (student_id, class_id) values (5, 1);
+INSERT INTO attendance (student_id, class_id) values (5, 4);
+INSERT INTO attendance (student_id, class_id) values (10, 3);
+INSERT INTO attendance (student_id, class_id) values (2, 1);
+INSERT INTO attendance (student_id, class_id) values (6, 4);
+INSERT INTO attendance (student_id, class_id) values (7, 3);
+INSERT INTO attendance (student_id, class_id) values (6, 1);
+INSERT INTO attendance (student_id, class_id) values (9, 4);
 
 
-select * from attendance; 
+SELECT * FROM attendance; 
 
-select * from classes;
+SELECT * FROM classes;
 
 SELECT * FROM mentors1;
 
-select * from students1;
+SELECT * FROM students1;
 
-select * from students1 where gratuated_from_cyf is false;
+SELECT * FROM students1 where graduated_from_cyf is false;
 
-select * from mentors1 where language = 'Java';
+SELECT * FROM mentors1 where language = 'Java';
 
-select * from students1 where  gratuated_from_cyf = true;
+SELECT * FROM students1 where  graduated_from_cyf = true;
 
-select * from classes where date < '2021-11-10';
+SELECT * FROM classes where date < '2021-11-10';
 
-select student_id from attendance where class_id = 3;
+SELECT student_id from attendance where class_id = 3;
 
 
 
