@@ -103,3 +103,76 @@ INSERT INTO order_items (order_id, product_id, quantity) VALUES(8, 5, 1);
 INSERT INTO order_items (order_id, product_id, quantity) VALUES(9, 13, 2);
 INSERT INTO order_items (order_id, product_id, quantity) VALUES(10, 14, 1);
 INSERT INTO order_items (order_id, product_id, quantity) VALUES(10, 6, 5);
+
+
+--1 
+SELECT customers.name, customers.address, customers.country 
+FROM customers WHERE customers.country = 'United States';
+
+
+--2
+SELECT * FROM CUSTOMERS ORDER BY name ASC;
+
+
+--3
+SELECT * FROM products WHERE unit_price > 100;
+
+
+--4
+SELECT * FROM products WHERE product_name like 'socks%';
+
+
+--5 
+SELECT  product_name, products.unit_price 
+FROM products 
+ORDER BY products.unit_price DESC
+LIMIT 5; 
+
+
+--6
+SELECT products.product_name, products.unit_price, suppliers.supplier_name
+FROM products 
+JOIN suppliers ON products.supplier_id = suppliers.id;
+
+
+--7
+SELECT products.product_name, suppliers.supplier_name
+FROM products 
+JOIN suppliers ON suppliers.country = 'United Kingdom';
+
+
+--8
+SELECT * FROM orders WHERE customer_id=1;
+
+
+--9
+SELECT orders.order_date, orders.order_reference, orders.customer_id, customers.name
+FROM orders 
+JOIN customers ON customers.name = 'Hope Crosby';
+
+
+
+--10 
+SELECT products.product_name, products.unit_price, order_items.quantity, order_reference
+FROM products, order_items 
+JOIN orders  on order_reference = 'ORD006';
+
+
+
+--11 
+SELECT customers.name, orders.order_reference, orders.order_date, products.product_name, suppliers.supplier_name, order_items.quantity  
+FROM customers, orders, order_items, products 
+JOIN suppliers ON products.supplier_id = suppliers.id;
+
+
+
+--12
+SELECT  customers.name, suppliers.country 
+FROM customers 
+JOIN suppliers ON suppliers.country = 'China';
+
+
+SELECT products.product_name, suppliers.supplier_name 
+FROM products 
+JOIN suppliers ON products.supplier_id = suppliers.id;
+
