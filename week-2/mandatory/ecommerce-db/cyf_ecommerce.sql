@@ -153,26 +153,37 @@ JOIN customers ON customers.name = 'Hope Crosby';
 
 
 --10 
-SELECT products.product_name, products.unit_price, order_items.quantity, order_reference
-FROM products, order_items 
-JOIN orders  on order_reference = 'ORD006';
-
+select products.product_name,products.unit_price,order_items.quantity 
+from products INNER join order_items 
+on products.id=order_items.product_id
+INNER join orders on orders.id =order_items.order_id 
+where orders.order_reference ='ORD006'
 
 
 --11 
-SELECT customers.name, orders.order_reference, orders.order_date, products.product_name, suppliers.supplier_name, order_items.quantity  
-FROM customers, orders, order_items, products 
-JOIN suppliers ON products.supplier_id = suppliers.id;
-
+select customers.name, orders.order_reference, orders.order_date, products.product_name, suppliers.supplier_name, order_items.quantity  
+from products join order_items on products.id = order_items.product_id
+join orders on orders.id = order_items.order_id 
+join customers on customers.id = orders.customer_id
+join suppliers on products.supplier_id = suppliers.id;
 
 
 --12
-SELECT  customers.name, suppliers.country 
-FROM customers 
-JOIN suppliers ON suppliers.country = 'China';
+select customers.name from customers join orders on customers.id = orders.customer_id 
+join order_items on orders.id = order_items.order_id
+join products on products.id = order_items.product_id 
+join suppliers on products.supplier_id = suppliers.id 
+where suppliers.country = 'China';
+
 
 
 SELECT products.product_name, suppliers.supplier_name 
 FROM products 
 JOIN suppliers ON products.supplier_id = suppliers.id;
+
+
+
+select suppliers.name, products.name from suppliers
+join products on products.id = products.supplier.id
+where products = "super warm socks " order by product.unit_price ASC;
 
