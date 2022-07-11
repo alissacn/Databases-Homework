@@ -160,7 +160,7 @@ app.delete("/orders/:orderId", (req, res) => {
     let deleteOrder = "DELETE FROM orders WHERE id = $1";
 
     pool.query(deleteOrder, [orderId])
-        .then(() => res.send("Customer deleted"))
+        .then(() => res.send("Order deleted"))
         .catch(error => res.error(error.message))
 });
 
